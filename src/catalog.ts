@@ -1,3 +1,37 @@
+export type client = {
+    id : number
+    nom : string
+}
+
+export type service_admin = {
+    id : number
+}
+
+export type catalog_admin = {
+    id : number
+}
+
+export type suggestion_bot = {
+    id : number
+} 
+
+export type accountant = {
+    id : number
+}
+
+export type stats_bot = {
+    id : number
+}
+
+export type developper = {
+    id : number
+}
+
+export type user = client | service_admin | catalog_admin | suggestion_bot |accountant | stats_bot | developper
+
+
+
+//-----------------------------------------------------------------------------------------------------------------
 export type Catalog = {
     movies:Movies
     genres: Genres
