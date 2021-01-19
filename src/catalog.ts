@@ -47,7 +47,6 @@ export type Movie = {
     cast: string
     age_rating: number
     duration:number
-    popularity: number
     genre: Genre
 
 
@@ -87,7 +86,6 @@ let movie1:Movie = {
     cast: "string",
     age_rating: 1,
     duration:1,
-    popularity: 1,
     genre: genre1
 }
 
