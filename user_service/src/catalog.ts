@@ -29,6 +29,11 @@ export type developper = {
 
 export type user = client | service_admin | catalog_admin | suggestion_bot |accountant | stats_bot | developper
 
+export type users = [user]
+export let myUser : user = {
+    id : 1,
+    nom : "client1"
+}
 
 
 //-----------------------------------------------------------------------------------------------------------------

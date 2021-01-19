@@ -1,6 +1,6 @@
 import express from 'express';
 import * as bodyParser from 'body-parser';
-import {myCatalog}  from './catalog';
+import {myUser}  from './catalog';
 
 
 const app = express();
@@ -13,8 +13,10 @@ app.use(bodyParser.json({
 }));
 //app.get('/', (req, res) => res.send('Hello World!'));
 
-app.get('/catalog', (req, res) => res.status(200).json(myCatalog));
+app.get('/user', (req, res) => res.status(200).json(myUser));
 
+
+/*
 //-----------movies-----------
 app.get('/catalog/movies',(req,res) => res.status(200).jsonp(myCatalog.movies))
 
@@ -75,6 +77,6 @@ app.put('/catalog/people/:id', (req,res) => {
     person =  req.body
     res.status(200).json(myCatalog.people)
 })
-
+*/
 export {app};
  

@@ -1,6 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.myCatalog = void 0;
+exports.myCatalog = exports.myUser = void 0;
+exports.myUser = {
+    id: 1,
+    nom: "client1"
+};
 let person1 = {
     id: 1,
     name: "person1",
