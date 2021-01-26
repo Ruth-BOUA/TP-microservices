@@ -1,6 +1,6 @@
 import express from 'express';
 import * as bodyParser from 'body-parser';
-import {myUser}  from './catalog';
+import {user_list}  from './user';
 
 
 const app = express();
@@ -11,72 +11,36 @@ app.use(bodyParser.json({
         req.rawBody = buf;
     }
 }));
-//app.get('/', (req, res) => res.send('Hello World!'));
 
-app.get('/user', (req, res) => res.status(200).json(myUser));
+//Consulter la liste des utilisateurs
+app.get('/user', (req, res) => res.status(200).json(user_list))
 
+//ajouter un utilisateur
+app.post('/user', (req,res) => {
+    user_list.push(req.body)
+    res.status(200).json(user_list)
+})
 
-/*
-//-----------movies-----------
-app.get('/catalog/movies',(req,res) => res.status(200).jsonp(myCatalog.movies))
-
-app.get('/catalog/movies/:id', (req,res) => {
+//modifier un utilisateur
+app.put('/user/:id', (req,res) => {
     const id = parseInt(req.params.id)
-    let movie = myCatalog.movies.find(movie => movie.id === id)
-    res.status(200).json(movie)
+    let user = user_list.find(user => user.id === id)
+    user =  req.body
+    res.status(200).json(user_list)
 })
 
-app.post('/catalog/movies', (req,res) => {
-    myCatalog.movies.push(req.body)
-    res.status(200).json(myCatalog.movies)
-})
-
-app.put('/catalog/movies/:id', (req,res) => {
+//rechercher un utilisateur par id 
+app.get('/user/:id', (req, res) => {
     const id = parseInt(req.params.id)
-    let movie = myCatalog.movies.find(movie => movie.id === id)
-    movie =  req.body
-    res.status(200).json(myCatalog.movies)
-})
-//-----------genres-----------
-app.get('/catalog/genres',(req,res) => res.status(200).json(myCatalog.genres))
+    let user = user_list.find(user => user.id === id)
+    res.status(200).json(user)})
 
-app.get('/catalog/genres/:id', (req,res) => {
-    const id = parseInt(req.params.id)
-    let genre = myCatalog.genres.find(genre => genre.id === id)
-    res.status(200).json(genre)
-})
+//rechercher un utilisateur par role
+app.get('/user/:role', (req, res) => {
+    const role = req.params.role
+    let user = user_list.filter(user => user.role === role)
+    res.status(200).json(user)})  
 
-app.post('/catalog/genres', (req,res) => {
-    myCatalog.genres.push(req.body)
-    res.status(200).json(myCatalog.genres)
-})
 
-app.put('/catalog/genres/:id', (req,res) => {
-    const id = parseInt(req.params.id)
-    let genre = myCatalog.genres.find(genre => genre.id === id)
-    genre =  req.body
-    res.status(200).json(myCatalog.genres)
-})
-//-----------people-----------
-app.get('/catalog/pepole',(req,res) => res.status(200).json(myCatalog.people))
-
-app.get('/catalog/people/:id', (req,res) => {
-    const id = parseInt(req.params.id)
-    let person = myCatalog.people.find(person => person.id === id)
-    res.status(200).json(person)
-})
-
-app.post('/catalog/people', (req,res) => {
-    myCatalog.people.push(req.body)
-    res.status(200).json(myCatalog.people)
-})
-
-app.put('/catalog/people/:id', (req,res) => {
-    const id = parseInt(req.params.id)
-    let person = myCatalog.people.find(person => person.id === id)
-    person =  req.body
-    res.status(200).json(myCatalog.people)
-})
-*/
 export {app};
  

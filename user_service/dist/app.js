@@ -34,6 +34,30 @@ app.use(bodyParser.json({
         req.rawBody = buf;
     }
 }));
-//app.get('/', (req, res) => res.send('Hello World!'));
-app.get('/user', (req, res) => res.status(200).json(catalog_1.myUser));
+//Consulter la liste des utilisateurs
+app.get('/user', (req, res) => res.status(200).json(catalog_1.user_list));
+//ajouter un utilisateur
+app.post('/user', (req, res) => {
+    catalog_1.user_list.push(req.body);
+    res.status(200).json(catalog_1.user_list);
+});
+//modifier un utilisateur
+app.put('/user/:id', (req, res) => {
+    const id = parseInt(req.params.id);
+    let user = catalog_1.user_list.find(user => user.id === id);
+    user = req.body;
+    res.status(200).json(catalog_1.user_list);
+});
+//rechercher un utilisateur par id 
+app.get('/user/:id', (req, res) => {
+    const id = parseInt(req.params.id);
+    let user = catalog_1.user_list.find(user => user.id === id);
+    res.status(200).json(user);
+});
+//rechercher un utilisateur par role
+app.get('/user/:role', (req, res) => {
+    const role = req.params.role;
+    let user = catalog_1.user_list.filter(user => user.role === role);
+    res.status(200).json(user);
+});
 //# sourceMappingURL=app.js.map

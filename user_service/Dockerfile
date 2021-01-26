@@ -1,14 +1,12 @@
-FROM node:12.20.1
+FROM node:latest
 
 # Create app directory
 WORKDIR /usr/src/app
 
-COPY package.json .
-COPY package-lock.json .
+COPY . .
 
 RUN npm install
 
+CMD [ "npm", "start" ]
 
-EXPOSE 8080
-
-CMD npm run start
+EXPOSE 8000

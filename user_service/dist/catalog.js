@@ -1,10 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.myCatalog = exports.myUser = void 0;
+exports.myCatalog = exports.user_list = exports.myUser = void 0;
 exports.myUser = {
     id: 1,
-    nom: "client1"
+    nom: "client1",
+    role: "client"
 };
+exports.user_list = [exports.myUser];
 let person1 = {
     id: 1,
     name: "person1",
@@ -21,7 +23,6 @@ let movie1 = {
     cast: "string",
     age_rating: 1,
     duration: 1,
-    popularity: 1,
     genre: genre1
 };
 exports.myCatalog = {
