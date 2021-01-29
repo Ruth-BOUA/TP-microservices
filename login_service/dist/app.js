@@ -25,7 +25,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.app = void 0;
 const express_1 = __importDefault(require("express"));
 const bodyParser = __importStar(require("body-parser"));
-const catalog_1 = require("./catalog");
+const login_1 = require("./login");
 const app = express_1.default();
 exports.app = app;
 app.use(bodyParser.json({
@@ -34,30 +34,23 @@ app.use(bodyParser.json({
         req.rawBody = buf;
     }
 }));
-//Consulter la liste des utilisateurs
-app.get('/user', (req, res) => res.status(200).json(catalog_1.user_list));
-//ajouter un utilisateur
+//Consulter la liste des utilisateurs connectés
+app.get('/user', (req, res) => res.status(200).json(login_1.users_logged));
+//connecter un utilisateur
 app.post('/user', (req, res) => {
-    catalog_1.user_list.push(req.body);
-    res.status(200).json(catalog_1.user_list);
-});
-//modifier un utilisateur
-app.put('/user/:id', (req, res) => {
-    const id = parseInt(req.params.id);
-    let user = catalog_1.user_list.find(user => user.id === id);
-    user = req.body;
-    res.status(200).json(catalog_1.user_list);
+    login_1.users_logged.push(req.body);
+    res.status(200).json(login_1.users_logged);
 });
 //rechercher un utilisateur par id 
 app.get('/user/:id', (req, res) => {
     const id = parseInt(req.params.id);
-    let user = catalog_1.user_list.find(user => user.id === id);
+    let user = login_1.users_logged.find(user => user.id === id);
     res.status(200).json(user);
 });
 //rechercher un utilisateur par role
 app.get('/user/:role', (req, res) => {
     const role = req.params.role;
-    let user = catalog_1.user_list.filter(user => user.role === role);
+    let user = login_1.users_logged.filter(user => user.role === role);
     res.status(200).json(user);
 });
 //# sourceMappingURL=app.js.map

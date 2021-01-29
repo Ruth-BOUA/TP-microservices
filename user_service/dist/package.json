@@ -5,7 +5,7 @@
   "main": "dist/index.js",
 "scripts": {
   "prebuild": "del dist",
-  "build": "tsc && copy package.json dist",
+     "build": "tsc && copy package.json dist",
      "prestart": "npm run build",
      "start": "ts-node ."
   },
