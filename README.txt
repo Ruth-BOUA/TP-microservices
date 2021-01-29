@@ -1,0 +1,2 @@
+Nous avons fait 3 microservices. Un pour gérer un catalogue de films, un autre pour gérer les utilisateurs et un dernier pour gérer l'authentification. Nous n'avons pas su comment terminer ce dernier.
+Les 3 microservices sont déployables sur Docker mais accessibles uniquement via la console et une commande "curl".
